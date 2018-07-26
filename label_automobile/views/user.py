@@ -1,5 +1,7 @@
 from pyramid.view import view_defaults, view_config
+
 from label_automobile.services.user import UserService
+from label_automobile.models.user import User
 
 
 @view_defaults(renderer='json')
@@ -10,7 +12,7 @@ class UserView:
 
     @view_config(route_name='user.list')
     def list(self):
-        raise NotImplementedError
+        return self.session.query(User).all()
 
     def get(self):
         raise NotImplementedError
