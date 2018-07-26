@@ -1,7 +1,7 @@
 from pyramid.view import view_defaults, view_config
 
-from label_automobile.services.user import UserService
 from label_automobile.models.user import User
+from label_automobile.services.user import UserService
 
 
 @view_defaults(renderer='json')
