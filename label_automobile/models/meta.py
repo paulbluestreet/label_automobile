@@ -1,3 +1,12 @@
+from datetime import datetime
+from uuid import uuid4
+
+import pytz
+from sqlalchemy import (
+    Column,
+    DateTime,
+)
+from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.schema import MetaData
 
@@ -14,3 +23,11 @@ NAMING_CONVENTION = {
 
 metadata = MetaData(naming_convention=NAMING_CONVENTION)
 Base = declarative_base(metadata=metadata)
+
+
+class BaseModel:
+    id = Column(UUID(as_uuid=True), default=uuid4, primary_key=True)
+    created = Column(DateTime(timezone=True), default=datetime.now(
+        tz=pytz.utc))
+    # TODO - default update on persist
+    updated = Column(DateTime(timezone=True))

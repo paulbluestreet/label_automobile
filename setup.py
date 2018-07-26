@@ -10,11 +10,13 @@ with open(os.path.join(here, 'CHANGES.txt')) as f:
 
 requires = [
     'plaster_pastedeploy',
+    'psycopg2-binary',
     'pyramid >= 1.9a',
     'pyramid_debugtoolbar',
     'pyramid_jinja2',
     'pyramid_retry',
     'pyramid_tm',
+    'pytz',
     'SQLAlchemy',
     'transaction',
     'zope.sqlalchemy',
@@ -54,7 +56,8 @@ setup(
             'main = label_automobile:main',
         ],
         'console_scripts': [
-            'initialize_label_automobile_db = label_automobile.scripts.initializedb:main',
+            'init_mob_db = label_automobile.scripts.initializedb:main',
+            'mock_mob_db = label_automobile.scripts.mockdb:main',
         ],
     },
 )

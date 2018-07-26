@@ -1,6 +1,6 @@
 import os
 import sys
-
+import transaction as ts
 
 from pyramid.paster import (
     get_appsettings,
@@ -12,6 +12,9 @@ from pyramid.scripts.common import parse_vars
 from ..models.meta import Base
 from ..models import (
     get_engine,
+    get_tm_session,
+    get_session_factory,
+    User
     )
 
 
@@ -32,3 +35,12 @@ def main(argv=sys.argv):
 
     engine = get_engine(settings)
     Base.metadata.create_all(engine)
+    session_factory = get_session_factory(engine)
+
+    with ts.manager:
+        dbsession = get_tm_session(session_factory, ts.manager)
+        user = User()
+        user.name = "John"
+        user.surname = "Doe"
+        user.email = "johndoe@example.com"
+        dbsession.add(user)

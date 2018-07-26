@@ -21,3 +21,4 @@ coverage
 test
 *.ini
 !example.ini
+.idea

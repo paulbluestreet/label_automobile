@@ -12,22 +12,33 @@ Getting Started
 
     python3 -m venv env
 
+- Activate virtual environment
+    source env/bin/activate
+
 - Upgrade packaging tools.
 
-    env/bin/pip install --upgrade pip setuptools
+    pip install --upgrade pip setuptools
 
 - Install the project in editable mode with its testing requirements.
 
-    env/bin/pip install -e ".[testing]"
+    pip install -e ".[testing]"
+
+- Change your settings
+    development.ini -> Database settings and possibly application port
 
 - Configure the database.
 
-    env/bin/initialize_label_automobile_db development.ini
+    init_mob_db development.ini
 
+- Add test data to the database
+
+    mock_mob_db development.ini
+
+---- Not implemented yet
 - Run your project's tests.
 
-    env/bin/pytest
+    pytest
 
 - Run your project.
 
-    env/bin/pserve development.ini
+    pserve development.ini (--reload optional to reload on code changes)
