@@ -1,3 +1,4 @@
+from label_automobile.helpers.exceptions import NotFoundError
 from label_automobile.models.user import User
 
 
