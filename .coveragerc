@@ -1,0 +1,3 @@
+[run]
+source = label_automobile
+omit = label_automobile/test*
