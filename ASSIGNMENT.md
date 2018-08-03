@@ -11,7 +11,7 @@ Our tech stack
 Before we start off, let me elaborate about our tech stack. For most projects, we use the following technologies:
 * Python (3.4+, preferably 3.6) for rapid development
 * PostgreSQL database, because it adheres more closely to the SQL standard than MySQL: https://www.postgresql.org/
-* Python Pyramid framework, because it has less vendor lock-in than Django, and the basic stack is leaner and meaner
+* Python with the Pyramid framework, because it has less vendor lock-in than Django, and the basic stack is leaner and meaner
 * SQLAlchemy as database ORM, because not writing your own SQL statements is faster and more secure (ORM takes care of not allowing SQL Injection etc)
 
 The premise
@@ -20,7 +20,7 @@ A company specialised in car parts wants to modernise their company, and start s
 Being the pro car salesmen that they are, they decided to develop the front-end via another agency. They entrust
 the back-end to none other than Label A.
 
-After a research Sprint 0, we've defined the following user stories on top of our backlog:
+After some initial research, we've defined the following user stories on top of our backlog:
 * As a company, I want all my products in a database, so I can offer them via our new platform to customers
 * As a client, I want to add a product to my shopping cart, so I can order it at a later stage
 * As a client, I want to remove a product from my shopping cart, so I can tailor the order to what I actually need
@@ -32,7 +32,7 @@ After a research Sprint 0, we've defined the following user stories on top of ou
 The actual exercise
 -------------------
 Develop an API (built on top of this skeleton) according to the user stories defined above.
-You should not spend more than 8 hours on this exercise, to put on your MVP glasses and prioritise according to what you think the product should minimally entail.
+You should not spend more than 8 hours on this exercise, so put on your MVP glasses and prioritise according to what you think the product should minimally entail.
 
 We can make the following assumptions:
 * We don't have to worry about the front-end, but should think of a data format a JavaScript application can handle
@@ -44,4 +44,4 @@ How to score bonus points (ergo: we really advise you to tackle it this way):
 * Read the Pyramid documentation, especially how it works with SQLAlchemy
 * Document how we can set up and instantiate the project, so we can easily test it functionally
 
-If you have any questions, feel free to contact us! Any feedback on this exercise is always welcome!!!
+If you have any questions, feel free to contact us! Any feedback on this exercise is always welcome!
