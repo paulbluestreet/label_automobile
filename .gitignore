@@ -22,3 +22,5 @@ test
 *.ini
 !example.ini
 .idea
+venv
+
