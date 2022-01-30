@@ -30,5 +30,6 @@ class UserView:
         return {
             "name": user.name,
             "surname": user.surname,
-            "email": user.email
+            "email": user.email,
+            "id": str(user.id)
         }
