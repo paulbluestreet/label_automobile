@@ -31,4 +31,7 @@ def main(argv=sys.argv):
     settings = get_appsettings(config_uri, options=options)
 
     engine = get_engine(settings)
+
+    # # Drop all tables
+    Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)

@@ -2,6 +2,8 @@ import os
 import sys
 import transaction as ts
 
+from sqlalchemy.orm.exc import NoResultFound
+
 from pyramid.paster import (
     get_appsettings,
     setup_logging,
@@ -14,7 +16,11 @@ from ..models import (
     get_engine,
     get_tm_session,
     get_session_factory,
-    User
+    User,
+    Product,
+    CartProduct,
+    Order,
+    OrderProduct
     )
 
 
@@ -39,8 +45,27 @@ def main(argv=sys.argv):
 
     with ts.manager:
         dbsession = get_tm_session(session_factory, ts.manager)
+
+        # Delete all current mockdata
+        for table in [CartProduct, OrderProduct, User, Product, Order]:
+            dbsession.query(table).delete()
+        dbsession.flush()
+
         user = User()
         user.name = "John"
         user.surname = "Doe"
         user.email = "johndoe@example.com"
         dbsession.add(user)
+
+        for product_example in [('Awesome Car Part', 'This product makes your care even more awesome'),
+                                ('Crappy Car Part', 'This product makes your brakes stop working')]:
+            product = Product()
+            product.name = product_example[0]
+            product.details = product_example[1]
+            dbsession.add(product)
+            dbsession.flush()
+
+        cart_product = CartProduct()
+        cart_product.user_id = user.id
+        cart_product.product_id = product.id
+        dbsession.add(cart_product)
